@@ -1,17 +1,33 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <HelloWorld/>
+    <h1>{{title}}</h1>
+    <sample-component/>
+    <add-item-component :items="items" :value="newItem"></add-item-component>
+    <items-component :items="items"></items-component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import SampleComponent from './components/SampleComponent'
+import ItemsComponent from './components/ItemsComponent'
+import AddItemComponent from './components/AddItemComponent'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SampleComponent,
+    ItemsComponent,
+    AddItemComponent
+  },
+  data () {
+    return {
+      title: 'JavaScript Heros',
+      items: [{name:'vue.js', checked:false},
+              {name:'react.js', checked:false},
+              {name:'angualr.js', checked:false}],
+      newItem: ''
+    }
   }
 }
 </script>
