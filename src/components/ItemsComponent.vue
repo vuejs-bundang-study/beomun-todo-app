@@ -1,19 +1,24 @@
 <template>
-  <ul>
-    <div v-for="item in items">
-      <input type="checkbox" v-bind:checked="item.checked">{{item.name}}
-    </div>
-  </ul>
+  <div>
+    <item-component v-bind:key="item.text" v-bind:item="item" v-for="item in items" @mouseover="mouseOver"></item-component>
+  </div>
 </template>
 
 <script>
+
+import ItemComponent from './ItemComponent'
+
 export default {
   name: 'ItemsComponent',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
+  components: {
+    ItemComponent
+  },
+  methods: {
+    mouseOver: function (value) {
+      this.$emit("mouseover",value);
     }
   },
   props:['items']
+
 }
 </script>
