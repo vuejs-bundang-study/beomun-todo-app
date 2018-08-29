@@ -38,19 +38,20 @@ export default {
   },
   methods: {
     onAdd: function (name) {
-
       this.items.push({
         name: name,
         checked: false
       });
     },
     onRemove: function (event) {
-      for( var key in this.items ){
-        if ( this.items[key].checked ){
-          delete this.items[key];
-        }
 
+      for( var i=0; i<this.items.length; i++ ){
+        if ( this.items[i].checked ){
+          this.items.splice(i,1);
+          i--;
+        }
       }
+
     },
     onInput: function (value) {
 

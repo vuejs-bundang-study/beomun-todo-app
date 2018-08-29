@@ -24,7 +24,7 @@ export default {
 
 <style lang="css">
   .removed {
-    color: gray;
+    color: red;
   }
   .removed span {
     text-decoration: line-through;

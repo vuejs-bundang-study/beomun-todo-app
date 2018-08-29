@@ -11,12 +11,10 @@ export default {
     /* add new item */
     onInput: function (event) {
       var text;
-
+      
       text = event.target.value.trim();
-      if( text ) {
-        //event trigger ( call add in parentComponent )
-        this.$emit('change', text);
-      }
+      //event trigger ( call add in parentComponent )
+      this.$emit('change', text);
     }
   },
   props: ['title']
