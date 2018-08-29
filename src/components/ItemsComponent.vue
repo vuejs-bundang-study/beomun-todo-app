@@ -1,6 +1,6 @@
 <template>
   <div>
-    <item-component v-bind:key="item.text" v-bind:item="item" v-for="item in items" @mouseover="mouseOver"></item-component>
+    <item-component v-bind:key="item.name" v-bind:item="item" v-for="item in items" @mouseover="mouseOver" :chkVisible="chkVisible"></item-component>
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
       this.$emit("mouseover",value);
     }
   },
-  props:['items']
+  props:['items','chkVisible']
 
 }
 </script>
