@@ -1,8 +1,14 @@
 export default {
-  getMessage(state) {
-    return (state.msg).toUpperCase();
+  getTitle(state) {
+    return (state.title).toUpperCase();
   },
-  getCount(state) {
-    return state.count;
+  getItems(state) {
+    return (state.items);
+  },
+  getImgSrc(state) {
+    return (state.imgSrc);
+  },
+  getChkVisible(state) {
+    return (state.chkVisible);
   }
 }

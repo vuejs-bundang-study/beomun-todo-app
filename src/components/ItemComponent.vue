@@ -1,7 +1,7 @@
 <template lang="html">
   <li :class="{ 'removed':item.checked }">
     <div class="checkbox">
-      <label @mouseover="mouseOver">
+      <label @mouseover="changeImgSrc">
         <transition name="fade"><input type="checkbox" v-model="item.checked" v-if="chkVisible"></transition>
         <div @click="onClick" style="display:inline" >{{ item.name }}</div>
       </label>
@@ -11,6 +11,9 @@
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
   data: function () {
     return {
@@ -18,7 +21,23 @@ export default {
     }
   },
   methods: {
-    /* label mouseOver 이벤트 */
+    changeImgSrc (ev) {
+      var index = this.item.name.indexOf('.js')
+      var name = "";
+      if( index > 0) {
+        name = this.item.name.substr(0,index)
+      }else{
+        name = this.item.name
+      }
+      this.$store.commit('changeImg',name)
+    },
+    onClick () {
+      
+    }
+  },
+  /*
+  methods: {
+     // label mouseOver 이벤트
     mouseOver: function (event) {
       var index = this.item.name.indexOf('.js');
       if( index > 0) {
@@ -27,18 +46,21 @@ export default {
         this.$emit('mouseover',this.item.name);
       }
     },
-    /* 해당 item의 내용을 보여주는 event */
+    //해당 item의 내용을 보여주는 event
     onClick: function () {
       if (this.chkVisible) return
       this.show = !this.show;
     },
-    /* 해당 item의 내용을 수정할때 발생하는 event */
+    //해당 item의 내용을 수정할때 발생하는 event
     onInput: function (event) {
       alert(this.target.event)
     }
   },
+  */
 
   props: ['item','chkVisible']
+
+
 }
 </script>
 

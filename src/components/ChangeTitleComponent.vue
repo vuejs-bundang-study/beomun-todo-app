@@ -1,14 +1,27 @@
 <template>
   <div class="">
-    <input type="text" v-bind:value="title"  @input="onInput">
+    <input type="text" :value="title" @keyup="changeTitle">
   </div>
 </template>
 
 <script>
+
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'ChangeTitleComponent',
+  computed: mapGetters({
+    title : 'getTitle',
+  }),
   methods: {
-    /* add new item */
+    changeTitle (ev) {
+      this.$store.commit('changeTitle',ev.target.value)
+    }
+  }
+
+  /*
+  methods: {
+    // add new item
     onInput: function (event) {
       var text;
 
@@ -18,5 +31,6 @@ export default {
     }
   },
   props: ['title']
+  */
 }
 </script>
